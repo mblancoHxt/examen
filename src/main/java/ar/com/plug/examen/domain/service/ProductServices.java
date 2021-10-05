@@ -1,12 +1,11 @@
 package ar.com.plug.examen.domain.service;
 
 import ar.com.plug.examen.domain.DTOs.ProductDTO;
-import ar.com.plug.examen.domain.model.Product;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
-public interface Productservices {
+public interface ProductServices {
 
     ResponseEntity<Object> getProduct();
 

@@ -1,7 +1,7 @@
 package ar.com.plug.examen.domain.controller;
 
 import ar.com.plug.examen.domain.DTOs.ProductDTO;
-import ar.com.plug.examen.domain.service.impl.ProductServicesImp;
+import ar.com.plug.examen.domain.service.ProductServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class ProductController {
 
     @Autowired
-    private ProductServicesImp productService;
+    private ProductServices productService;
 
     //@RequestMapping(value = "/getProduct", method = RequestMethod.GET)
     @GetMapping("/")

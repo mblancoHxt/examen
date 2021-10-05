@@ -6,8 +6,7 @@ import ar.com.plug.examen.domain.mappers.ProductMapper;
 import ar.com.plug.examen.domain.mappers.ResponseMapper;
 import ar.com.plug.examen.domain.model.Product;
 import ar.com.plug.examen.domain.repository.ProductRepository;
-import ar.com.plug.examen.domain.service.Productservices;
-import org.checkerframework.checker.units.qual.A;
+import ar.com.plug.examen.domain.service.ProductServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProductServicesImp implements Productservices {
+public class ProductServicesImp implements ProductServices {
 
     @Autowired
     private ProductRepository productRepository;
