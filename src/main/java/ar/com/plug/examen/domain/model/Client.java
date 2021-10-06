@@ -2,6 +2,7 @@ package ar.com.plug.examen.domain.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 @Entity
@@ -21,6 +22,9 @@ public class Client implements Serializable {
     private String gender;
     private String password;
 
+    @OneToMany(mappedBy = "client", cascade= CascadeType.ALL)
+    private List<Buy> listBuy;
+
     public Client() {
     }
 
@@ -34,6 +38,18 @@ public class Client implements Serializable {
         this.email = email;
         this.gender = gender;
         this.username = username;
+        this.password = password;
+    }
+
+    public Client(String username, int dni, String name, String lastname, String addres, String phone, String email, String gender, String password) {
+        this.username = username;
+        this.dni = dni;
+        this.name = name;
+        this.lastname = lastname;
+        this.addres = addres;
+        this.phone = phone;
+        this.email = email;
+        this.gender = gender;
         this.password = password;
     }
 
@@ -115,5 +131,13 @@ public class Client implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Buy> getListBuy() {
+        return listBuy;
+    }
+
+    public void setListBuy(List<Buy> listBuy) {
+        this.listBuy = listBuy;
     }
 }

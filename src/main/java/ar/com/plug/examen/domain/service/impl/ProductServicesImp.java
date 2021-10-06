@@ -36,62 +36,62 @@ public class ProductServicesImp implements ProductServices {
     }
 
     @Override
-    public ResponseEntity<Object> save(ProductDTO request) {
+    public ResponseEntity save(ProductDTO request) {
         Product prod = productMapper.generateProduct(request);
         Product prodNew = productRepository.save(prod);
         if(prodNew != null){
             ResponseDTO dto = responseMapper.generateResponse( prodNew,"Se creo con exito");
-            return new ResponseEntity<Object>(dto, HttpStatus.CREATED);
+            return new ResponseEntity(dto, HttpStatus.CREATED);
         }
         else{
             ResponseDTO dto = responseMapper.generateFallResponse("No se puede guardar, ya existe");
-            return new ResponseEntity<Object>(dto, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(dto, HttpStatus.BAD_REQUEST);
         }
     }
 
     @Override
-    public ResponseEntity<Object> delete(int id) {
+    public ResponseEntity delete(int id) {
         Product prod = productRepository.findById(id);
         if(prod != null) {
             productRepository.delete(prod);
             ProductDTO dto = productMapper.generateDTO(prod);
             ResponseDTO resp = responseMapper.generateResponse(dto, "Proceso correcto");
-            return new ResponseEntity<Object>(resp, HttpStatus.OK);
+            return new ResponseEntity(resp, HttpStatus.OK);
         }
         else{
             ResponseDTO dto = responseMapper.generateFallResponse("No se puede borrar, no existe");
-            return new ResponseEntity<Object>(dto, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(dto, HttpStatus.BAD_REQUEST);
         }
     }
 
     @Override
-    public ResponseEntity<Object> getProductById(int id) {
+    public ResponseEntity getProductById(int id) {
         Product prod = productRepository.findById(id);
 
         if(prod != null){
             ProductDTO dto = productMapper.generateDTO(prod);
             ResponseDTO resp = responseMapper.generateResponse(dto, "Proceso correcto");
-            return new ResponseEntity<Object>(resp, HttpStatus.OK);
+            return new ResponseEntity(resp, HttpStatus.OK);
         }
         else{
             ResponseDTO dto = responseMapper.generateFallResponse("No se puede obtener, no existe");
-            return new ResponseEntity<Object>(dto, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(dto, HttpStatus.BAD_REQUEST);
         }
     }
 
     @Override
-    public ResponseEntity<Object> modify(ProductDTO request) {
+    public ResponseEntity modify(ProductDTO request) {
         Product prod = productMapper.generateProduct(request);
         if(productRepository.findById(prod.getId()) != null) {
             Product prodNew = productRepository.save(prod);
             ProductDTO dtoProd = productMapper.generateDTO(prodNew);
             ResponseDTO dto = responseMapper.generateResponse(dtoProd, "Se modificó correctamente");
 
-            return new ResponseEntity<>(dto, HttpStatus.OK);
+            return new ResponseEntity(dto, HttpStatus.OK);
         }
         else{
             ResponseDTO dto = responseMapper.generateFallResponse("No existe el Producto buscado");
-            return new ResponseEntity<Object>(dto, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(dto, HttpStatus.BAD_REQUEST);
         }
     }
 }

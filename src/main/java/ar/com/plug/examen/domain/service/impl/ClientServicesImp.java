@@ -60,8 +60,8 @@ public class ClientServicesImp implements ClientServices {
         else{
             Client cliMod = clientMapper.generateClient(request);
             Client cliResp = clientRepository.save(cliMod);
-            ClientDTO dto = clientMapper.generateClientDTO(cliResp);
-            ResponseDTO resp = responseMapper.generateResponse(dto, "Cliente modificado con éxito");
+            //ClientDTO dto = clientMapper.generateClientDTO(cliResp);
+            ResponseDTO resp = responseMapper.generateResponse(request, "Cliente modificado con éxito");
             return  new ResponseEntity(resp, HttpStatus.OK);
         }
 

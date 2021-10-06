@@ -5,6 +5,20 @@ public class ProductDTO {
     private String name;
     private Float price;
 
+    public ProductDTO() {
+    }
+
+    public ProductDTO(String name, Float price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public ProductDTO(int id, String name, Float price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
     public int getId() {
         return id;
     }
