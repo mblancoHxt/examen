@@ -4,6 +4,9 @@ import ar.com.plug.examen.domain.DTOs.ProductDTO;
 import ar.com.plug.examen.domain.model.Product;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class ProductMapper {
 
@@ -22,5 +25,14 @@ public class ProductMapper {
         dto.setName(prod.getName());
         dto.setPrice(prod.getPrice());
         return dto;
+    }
+
+    public List<ProductDTO> generateListDTO(List<Product> listProd) {
+        ArrayList<ProductDTO> listFinal = new ArrayList<>();
+        for( Product prod : listProd){
+            ProductDTO dto = this.generateDTO(prod);
+            listFinal.add(dto);
+        }
+        return listFinal;
     }
 }

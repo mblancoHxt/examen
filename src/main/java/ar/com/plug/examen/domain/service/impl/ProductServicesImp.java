@@ -30,7 +30,9 @@ public class ProductServicesImp implements ProductServices {
     @Override
     public ResponseEntity<Object> getProduct( ) {
         List<Product> listProd =  productRepository.findAll();
-        return new ResponseEntity<Object>(responseMapper.generateResponse(listProd, "Todo bien"), HttpStatus.OK) ;
+        List<ProductDTO> listResp = productMapper.generateListDTO(listProd);
+        ResponseDTO resp = responseMapper.generateResponse(listProd, "Proceso completado");
+        return new ResponseEntity<Object>(resp, HttpStatus.OK) ;
     }
 
     @Override
@@ -52,7 +54,8 @@ public class ProductServicesImp implements ProductServices {
         Product prod = productRepository.findById(id);
         if(prod != null) {
             productRepository.delete(prod);
-            ProductDTO resp = productMapper.generateDTO(prod);
+            ProductDTO dto = productMapper.generateDTO(prod);
+            ResponseDTO resp = responseMapper.generateResponse(dto, "Proceso correcto");
             return new ResponseEntity<Object>(resp, HttpStatus.OK);
         }
         else{
@@ -66,8 +69,9 @@ public class ProductServicesImp implements ProductServices {
         Product prod = productRepository.findById(id);
 
         if(prod != null){
-            ProductDTO resp = productMapper.generateDTO(prod);
-            return new ResponseEntity<Object>(resp, HttpStatus.BAD_REQUEST);
+            ProductDTO dto = productMapper.generateDTO(prod);
+            ResponseDTO resp = responseMapper.generateResponse(dto, "Proceso correcto");
+            return new ResponseEntity<Object>(resp, HttpStatus.OK);
         }
         else{
             ResponseDTO dto = responseMapper.generateFallResponse("No se puede obtener, no existe");
