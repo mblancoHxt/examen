@@ -31,7 +31,7 @@ public class ProductServicesImp implements ProductServices {
     public ResponseEntity<Object> getProduct( ) {
         List<Product> listProd =  productRepository.findAll();
         List<ProductDTO> listResp = productMapper.generateListDTO(listProd);
-        ResponseDTO resp = responseMapper.generateResponse(listProd, "Proceso completado");
+        ResponseDTO resp = responseMapper.generateResponse(listResp, "Proceso completado");
         return new ResponseEntity<Object>(resp, HttpStatus.OK) ;
     }
 
@@ -39,8 +39,9 @@ public class ProductServicesImp implements ProductServices {
     public ResponseEntity save(ProductDTO request) {
         Product prod = productMapper.generateProduct(request);
         Product prodNew = productRepository.save(prod);
+        ProductDTO prodData = productMapper.generateDTO(prodNew);
         if(prodNew != null){
-            ResponseDTO dto = responseMapper.generateResponse( prodNew,"Se creo con exito");
+            ResponseDTO dto = responseMapper.generateResponse( prodData,"Se creo con exito");
             return new ResponseEntity(dto, HttpStatus.CREATED);
         }
         else{

@@ -1,5 +1,9 @@
 package ar.com.plug.examen.domain.DTOs;
 
+import com.sun.istack.NotNull;
+import net.minidev.json.annotate.JsonIgnore;
+import org.springframework.lang.NonNull;
+
 public class BuyDetailsDTO {
     private int id;
     private Integer id_buy ;

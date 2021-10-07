@@ -38,7 +38,7 @@ public class BuyMapper {
         return dtoResp;
     }
 
-    private BuyDetailsDTO generateBuyDetailDTO(BuyDetails details) {
+    public BuyDetailsDTO generateBuyDetailDTO(BuyDetails details) {
         BuyDetailsDTO dto = new BuyDetailsDTO();
         dto.setId(details.getId());
         dto.setId_buy(details.getBuy().getId());
@@ -54,4 +54,5 @@ public class BuyMapper {
         resp.setDate(buyDTO.getDate());
         return resp;
     }
+
 }
