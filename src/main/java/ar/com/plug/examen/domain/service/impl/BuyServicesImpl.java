@@ -179,5 +179,17 @@ public class BuyServicesImpl implements BuyServices {
         }
     }
 
+    @Override
+    public ResponseEntity getAllBuys() {
+        List<Buy> listBuy = buyRepository.findAllBuys();
+        List<BuyDTO> listResp = new ArrayList<>();
+        for(Buy buy : listBuy){
+            BuyDTO dto = buyMapper.generateBuyDTO(buy);
+            listResp.add(dto);
+        }
+        ResponseDTO resp = responseMapper.generateResponse(listResp, "Proceso correcto");
+        return new ResponseEntity(resp, HttpStatus.OK);
+    }
+
 
 }

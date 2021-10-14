@@ -120,7 +120,7 @@ public class ClientServicesImp implements ClientServices {
     public ResponseEntity getClientByProduct(Integer id) {
         Product prod = productRepository.findById(id);
         if(prod != null){
-            List<Client> listClient = clientRepository.findByListBuy_ListDetails_ProductEquals(prod);
+            List<Client> listClient = clientRepository.findByListBuy_ListDetails_ProductEquals(prod.getId());
             List<ClientDTO> listResp = clientMapper.mappList(listClient);
             ResponseDTO resp = responseMapper.generateResponse(listResp, "Respuesta correcta");
             return new ResponseEntity(resp, HttpStatus.OK);

@@ -10,4 +10,6 @@ public interface SellerServices {
     ResponseEntity postSeller(SellerDTO seller);
 
     ResponseEntity putSeller(SellerDTO sellerDTO);
+
+    ResponseEntity deleteSeller(Integer id);
 }

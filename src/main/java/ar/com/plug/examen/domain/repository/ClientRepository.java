@@ -21,6 +21,14 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
 
     List<Client> findByStatusGreaterThan(int status);
 
+    @Query(value = "SELECT c.* " +
+            "FROM payments.client c, payments.buydetails d, payments.buy b " +
+            "where c.id = b.id_client " +
+            "and b.id = d.id_buy " +
+            "and d.id_product = ?1 " +
+            "and c.status > 0 ", nativeQuery = true)
+    List<Client> findByListBuy_ListDetails_ProductEquals(int idProduct);
+
 
 
 

@@ -14,4 +14,6 @@ public interface BuyServices {
     ResponseEntity getBuysByProductId(int id);
 
     ResponseEntity getBuysByClient(int id);
+
+    ResponseEntity getAllBuys();
 }

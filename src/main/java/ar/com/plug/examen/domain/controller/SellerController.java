@@ -29,4 +29,9 @@ public class SellerController {
         return sellerServices.putSeller(sellerDTO);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteMapping(@PathVariable("id") Integer id){
+        return sellerServices.deleteSeller(id);
+    }
+
 }

@@ -39,5 +39,10 @@ public class BuyController {
         return buyServices.getBuysByClient(id);
     }
 
+    @GetMapping("/")
+    ResponseEntity getAllBuys(){
+        return buyServices.getAllBuys();
+    }
+
 
 }
