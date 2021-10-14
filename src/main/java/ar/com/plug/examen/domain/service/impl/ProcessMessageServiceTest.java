@@ -1,7 +1,8 @@
-package ar.com.plug.examen.domain.service;
+package ar.com.plug.examen.domain.service.impl;
 
 import ar.com.plug.examen.domain.model.Message;
 import ar.com.plug.examen.domain.service.impl.ProcessMessageServiceImpl;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -21,7 +22,7 @@ public class ProcessMessageServiceTest {
         String messageTest = "TEST";
         Message message = messageService.processMessage(messageTest);
 
-        assertNotNull(message);
-        assertEquals(message.getMessage(), messageTest);
+        Assert.assertNotNull(message);
+        Assert.assertEquals(message.getMessage(), messageTest);
     }
 }

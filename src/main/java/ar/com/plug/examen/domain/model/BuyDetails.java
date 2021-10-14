@@ -1,8 +1,5 @@
 package ar.com.plug.examen.domain.model;
 
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
-import org.checkerframework.checker.index.qual.GTENegativeOne;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -10,15 +7,15 @@ import java.io.Serializable;
 @Table(name = "buydetails")
 public class BuyDetails implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idBuy", referencedColumnName = "id")
+    @JoinColumn(name = "id_Buy")
     private Buy buy;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idProduct", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_product", referencedColumnName = "id")
     private Product product;
 
     private int cant;

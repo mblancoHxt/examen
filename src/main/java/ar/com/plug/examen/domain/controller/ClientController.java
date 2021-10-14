@@ -36,4 +36,7 @@ public class ClientController {
     @GetMapping("/{id}")
     public  ResponseEntity getClient(@PathVariable Integer id){ return clientServices.getClient(id);}
 
+    @GetMapping("/product/{id}")
+    public  ResponseEntity getClientByProduct(@PathVariable Integer id){ return clientServices.getClientByProduct(id);}
+
 }

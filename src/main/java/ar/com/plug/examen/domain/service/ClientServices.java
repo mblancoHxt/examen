@@ -13,4 +13,6 @@ public interface ClientServices {
     ResponseEntity deleteClient(Integer id);
 
     ResponseEntity getClient(Integer id);
+
+    ResponseEntity getClientByProduct(Integer id);
 }

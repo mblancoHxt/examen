@@ -17,7 +17,7 @@ public class Product implements Serializable {
 
     private Float price;
 
-    @OneToMany(mappedBy = "product", cascade= CascadeType.ALL)
+     @OneToMany(mappedBy = "product", cascade= CascadeType.ALL)
     private List<BuyDetails> listDetails;
 
     public Integer getId() {

@@ -29,4 +29,15 @@ public class BuyController {
         return buyServices.postDetails(buyDetailsDTO);
     }
 
+    @GetMapping("/products/{id}")
+    ResponseEntity getPorProduct(@PathVariable int id){
+        return buyServices.getBuysByProductId(id);
+    }
+
+    @GetMapping("/clients/{id}")
+    ResponseEntity getPorClients(@PathVariable int id){
+        return buyServices.getBuysByClient(id);
+    }
+
+
 }

@@ -10,4 +10,8 @@ public interface BuyServices {
     ResponseEntity postBuy(BuyDTO buyDTO);
 
     ResponseEntity postDetails(BuyDetailsDTO buyDetailsDTO);
+
+    ResponseEntity getBuysByProductId(int id);
+
+    ResponseEntity getBuysByClient(int id);
 }
